@@ -26,4 +26,12 @@ public class EventService {
        store.add(e);
        return e;
     }
+
+    public Event update(Event e) {
+        if(findById(e.getTicketCode()).isPresent()) {
+            throw new IllegalArgumentException("Ticket code already exists");
+        }
+        store.add(e);
+        return e;
+    }
 }
