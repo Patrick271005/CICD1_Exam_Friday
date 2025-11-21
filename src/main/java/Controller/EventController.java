@@ -39,4 +39,14 @@ public class EventController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping("/api/event/{id]")
+    public ResponseEntity<Void> delete(@PathVariable String id, @Valid @RequestBody Event e){
+        Optional<Event> maybe = service.findById(e.getTicketCode());
+        if(maybe.isPresent()){
+            //service.deleteBy(id);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
